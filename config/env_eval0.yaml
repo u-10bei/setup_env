@@ -1,0 +1,51 @@
+# 環境構築に関するすべての設定値 (eval0モード用)
+# ファイルバージョン: 1.3.0
+
+# === 基本設定 ===
+conda_env_name: "env_culture"
+python_version: "3.12"
+# 注: CONDA_ENV_FULL_PATHは自動生成されます ($HOME/.conda/envs/${conda_env_name})
+
+# === ディレクトリ設定 ===
+# TOOLS_DIRは自動的に$HOMEに設定されます
+library_dir: "$HOME/compe_library"
+# CONDA_ROOT_PATHは自動的に$HOME/miniconda3に設定されます
+system_ld_lib_paths: "/usr/lib64:/usr/lib"
+
+# === Conda/CUDA バージョン ===
+# CUDA Toolkitのバージョンを指定（pytorch_cuda_versionは自動生成されます）
+# 例: "12.8.1" → pytorch_cuda_version="12.8" が自動生成
+cuda_toolkit_version: "12.8.1"
+
+# === PyTorch バージョン（pipでインストール） ===
+# PyTorchのバージョンを指定
+pytorch_version: "2.8.0"
+torchvision_version: "0.23.0"
+torchaudio_version: "2.8.0"
+# index-urlは自動生成されます（例: cu128）
+
+# === ビルド設定 ===
+gcc_version: "12"
+cc_path: "/usr/bin/gcc"
+cxx_path: "/usr/bin/g++"
+# BUILD_MAX_JOBSはデフォルトでnprocの値を使用します（空欄可）
+build_max_jobs: ""
+torch_cuda_arch_list: "9.0"
+# CMAKE_CUDA_ARCHITECTURESはTORCH_CUDA_ARCH_LISTから自動生成されます
+
+# === Pip requirements ===
+pip_requirements_file: "$HOME/setup_env/config/requirements-eval0.txt"
+vllm_version: "==0.9.2"
+
+# === ソースビルド対象ライブラリ ===
+apex:
+  repo_url: "https://github.com/NVIDIA/apex.git"
+  commit: "25.04"
+
+transformer_engine:
+  repo_url: "https://github.com/NVIDIA/TransformerEngine.git"
+  commit: "release_v2.4"
+
+flash_attention:
+  repo_url: "https://github.com/Dao-AILab/flash-attention.git"
+  commit: "v2.7.4"
